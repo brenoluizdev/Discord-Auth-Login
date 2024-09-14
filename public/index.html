@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord Login</title>
+    <link rel="shortcut icon" href="assets/BL.png" type="image/x-icon">
     <style>
         body {
             display: flex;
@@ -11,9 +12,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #7289DA;
-            color: white;
+            background: url('assets/background.png') no-repeat center center fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
         .login-button {
             background-color: #5865F2;
@@ -26,13 +35,27 @@
             font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .login-button:hover {
             background-color: #4752C4;
         }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        p {
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-    <a href="/login" class="login-button">Login with Discord</a>
+    <div class="card">
+        <h1>Login with Discord</h1>
+        <p>Access exclusive features and content by logging in with your Discord account.</p>
+        <a href="/login" class="login-button">Login with Discord</a>
+    </div>
 </body>
 </html>
