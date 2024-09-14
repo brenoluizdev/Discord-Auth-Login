@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #7289DA;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            border-radius: 50%;
+        }
+        .user-info {
+            margin-top: 20px;
+        }
+        .logout-button {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .logout-button:hover {
+            background-color: #CC0000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, <span id="username"></span>!</h1>
+    <img id="avatar" src="" alt="Avatar" width="100" height="100" />
+    <div class="user-info">
+        <p>ID: <span id="userId"></span></p>
+        <p>Username: <span id="usernameText"></span></p>
+        <p>Discriminator: <span id="discriminator"></span></p>
+    </div>
+    <button class="logout-button" onclick="window.location.href='/logout'">Logout</button>
+
+    <script>
+        // Fetch user data and populate the dashboard
+        fetch('/auth/discord/user')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('username').textContent = data.username;
+                document.getElementById('avatar').src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                document.getElementById('userId').textContent = data.id;
+                document.getElementById('usernameText').textContent = data.username;
+                document.getElementById('discriminator').textContent = data.discriminator;
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+    </script>
+</body>
+</html>
