@@ -28,7 +28,8 @@ app.get('/login', (req, res) => {
 
 app.get('/auth/discord/callback', async (req, res) => {
   const code = req.query.code;
-
+  if (!code) return res.redirect('/');
+  
   try {
     const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
       client_id: CLIENT_ID,
