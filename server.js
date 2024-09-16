@@ -30,13 +30,15 @@ app.get('/auth/discord/callback', async (req, res) => {
   const code = req.query.code;
   if (!code) return res.redirect('/');
   
+  const redirectUri = decodeURIComponent(REDIRECT_URI);
+
   try {
     const tokenResponse = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
       client_id: CLIENT_ID,
       client_secret: CLIENT_SECRET,
       grant_type: 'authorization_code',
       code: code,
-      redirect_uri: REDIRECT_URI,
+      redirect_uri: redirectUri,
       scope: SCOPES,
     }), {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
