@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = process.env.REDIRECT_URI;
+const REDIRECT_URI = encodeURIComponent(process.env.REDIRECT_URI);
 const SCOPES = 'identify';
 
 app.get('/', (req, res) => {
